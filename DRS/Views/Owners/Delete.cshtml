@@ -1,0 +1,95 @@
+﻿@model DRS.DataBase.vessel_owner_ref
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Owner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_nic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_nic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_tele)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_tele)
+        </dd>
+    </dl>
+
+    <br />
+    <h4>Record Details</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_last_modified_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_last_modified_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_last_modified_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_last_modified_by)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.owner.owner_id)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    }
+</div>

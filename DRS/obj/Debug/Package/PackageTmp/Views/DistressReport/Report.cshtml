@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Generate Report For NHQ/4PB/Ministry of Foreign Affairs</h2>
+
+<div>
+    <p>
+        Use below text boxes and input required details, in order to generate Fax Message.
+    </p>
+</div>
+
+<div>
+    <form method="post">
+            <table>
+                <tr>
+                    <td>Report To:<input id="report" name="report" value="Director General (consular), Ministry of Foreign Affairs / DNO NHQ" placeholder="Report TO:" class="form-control"></td>
+                </tr>
+                <tr><td><br /></td></tr>
+                <tr>
+                    <td>Radio Officer Name:<input id="radioOfficer" name="radioOfficer" placeholder="Please input Radio Officer name" class="form-control"></td>
+                </tr>
+                <tr><td><br /></td></tr>
+                <tr>
+                    <td>Duty Officer Name:<input id="dutyOfficer" name="dutyOfficer" placeholder="Please input Duty Officer name" class="form-control"></td>
+                </tr>
+                <tr><td><br /></td></tr>
+                <tr>
+                    <td><input type="submit" value="Submit" class="btn btn-success" /></td>
+                </tr>
+            </table>
+    </form>
+</div>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DRS.DataBase.user>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Users of DRS</h2>
+
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+
+<p>
+    @Html.ActionLink("Create New", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" })
+</p>
+
+<div class="code-cut">
+    @Html.Grid(Model).Columns(Columns =>
+{
+    Columns.Add(c => c.user_name).Titled("Officer Name").Filterable(true);
+    Columns.Add(c => c.user_tele).Titled("Telephone No").Filterable(true);
+    Columns.Add(c => c.user_address).Titled("Address").Filterable(true);
+    Columns.Add(c => c.user_nic).Titled("NIC No").Filterable(true);
+    Columns.Add(c => c.user_username).Titled("User Name").Filterable(true);
+
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Edit", "Edit", "Users", new { id = c.user_id }, htmlAttributes: new { @class = "btn btn-warning btn-primary btn-sm" })
+        .ToHtmlString());
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Details", "Details", "Users", new { id = c.user_id }, htmlAttributes: new { @class = "btn btn-info btn-primary btn-sm" })
+        .ToHtmlString());
+}).WithPaging(10).Sortable().Filterable()
+</div>
+

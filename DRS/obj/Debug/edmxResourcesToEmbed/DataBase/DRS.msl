@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DRSModelStoreContainer" CdmEntityContainer="DRSEntities">
+    <EntitySetMapping Name="d_detail">
+      <EntityTypeMapping TypeName="DRSModel.d_detail">
+        <MappingFragment StoreEntitySet="d_detail">
+          <ScalarProperty Name="mcs_id" ColumnName="mcs_id" />
+          <ScalarProperty Name="distress_id" ColumnName="distress_id" />
+          <ScalarProperty Name="vessel_id" ColumnName="vessel_id" />
+          <ScalarProperty Name="d_detail_status" ColumnName="d_detail_status" />
+          <ScalarProperty Name="d_detail_last_modified_by" ColumnName="d_detail_last_modified_by" />
+          <ScalarProperty Name="d_detail_last_modified_date" ColumnName="d_detail_last_modified_date" />
+          <ScalarProperty Name="d_detail_created_by" ColumnName="d_detail_created_by" />
+          <ScalarProperty Name="d_detail_created_date" ColumnName="d_detail_created_date" />
+          <ScalarProperty Name="d_detail_departure_location" ColumnName="d_detail_departure_location" />
+          <ScalarProperty Name="d_detail_departure_time" ColumnName="d_detail_departure_time" />
+          <ScalarProperty Name="d_detail_departure_date" ColumnName="d_detail_departure_date" />
+          <ScalarProperty Name="d_detail_remarks" ColumnName="d_detail_remarks" />
+          <ScalarProperty Name="d_detail_action_taken" ColumnName="d_detail_action_taken" />
+          <ScalarProperty Name="d_detail_names_of_crew" ColumnName="d_detail_names_of_crew" />
+          <ScalarProperty Name="d_detail_no_of_crew" ColumnName="d_detail_no_of_crew" />
+          <ScalarProperty Name="d_detail_nature_of_distress" ColumnName="d_detail_nature_of_distress" />
+          <ScalarProperty Name="d_detail_communication_freqency" ColumnName="d_detail_communication_freqency" />
+          <ScalarProperty Name="d_detail_lkp_time" ColumnName="d_detail_lkp_time" />
+          <ScalarProperty Name="d_detail_lkp_date" ColumnName="d_detail_lkp_date" />
+          <ScalarProperty Name="d_detail_lkp_long_direction" ColumnName="d_detail_lkp_long_direction" />
+          <ScalarProperty Name="d_detail_lkp_long_min" ColumnName="d_detail_lkp_long_min" />
+          <ScalarProperty Name="d_detail_lkp_long_deg" ColumnName="d_detail_lkp_long_deg" />
+          <ScalarProperty Name="d_detail_lkp_lat_direction" ColumnName="d_detail_lkp_lat_direction" />
+          <ScalarProperty Name="d_detail_lkp_lat_min" ColumnName="d_detail_lkp_lat_min" />
+          <ScalarProperty Name="d_detail_lkp_lat_deg" ColumnName="d_detail_lkp_lat_deg" />
+          <ScalarProperty Name="d_detail_id" ColumnName="d_detail_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="distresses">
+      <EntityTypeMapping TypeName="DRSModel.distress">
+        <MappingFragment StoreEntitySet="distresses">
+          <ScalarProperty Name="distress_status" ColumnName="distress_status" />
+          <ScalarProperty Name="distress_last_modified_by" ColumnName="distress_last_modified_by" />
+          <ScalarProperty Name="distress_last_modified_date" ColumnName="distress_last_modified_date" />
+          <ScalarProperty Name="distress_created_by" ColumnName="distress_created_by" />
+          <ScalarProperty Name="distress_created_date" ColumnName="distress_created_date" />
+          <ScalarProperty Name="distress_description" ColumnName="distress_description" />
+          <ScalarProperty Name="distress_name" ColumnName="distress_name" />
+          <ScalarProperty Name="distress_id" ColumnName="distress_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="districts">
+      <EntityTypeMapping TypeName="DRSModel.district">
+        <MappingFragment StoreEntitySet="districts">
+          <ScalarProperty Name="district_status" ColumnName="district_status" />
+          <ScalarProperty Name="district_last_modified_by" ColumnName="district_last_modified_by" />
+          <ScalarProperty Name="district_last_modified_date" ColumnName="district_last_modified_date" />
+          <ScalarProperty Name="district_created_by" ColumnName="district_created_by" />
+          <ScalarProperty Name="district_created_date" ColumnName="district_created_date" />
+          <ScalarProperty Name="district_name" ColumnName="district_name" />
+          <ScalarProperty Name="district_code" ColumnName="district_code" />
+          <ScalarProperty Name="district_id" ColumnName="district_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="licences">
+      <EntityTypeMapping TypeName="DRSModel.licence">
+        <MappingFragment StoreEntitySet="licences">
+          <ScalarProperty Name="vessel_id" ColumnName="vessel_id" />
+          <ScalarProperty Name="licence_status" ColumnName="licence_status" />
+          <ScalarProperty Name="licence_last_modified_by" ColumnName="licence_last_modified_by" />
+          <ScalarProperty Name="licence_last_modified_date" ColumnName="licence_last_modified_date" />
+          <ScalarProperty Name="licence_created_by" ColumnName="licence_created_by" />
+          <ScalarProperty Name="licence_created_date" ColumnName="licence_created_date" />
+          <ScalarProperty Name="licence_trc_fileno" ColumnName="licence_trc_fileno" />
+          <ScalarProperty Name="licence_date_to" ColumnName="licence_date_to" />
+          <ScalarProperty Name="licence_date_from" ColumnName="licence_date_from" />
+          <ScalarProperty Name="licence_callsign" ColumnName="licence_callsign" />
+          <ScalarProperty Name="licence_id" ColumnName="licence_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="owners">
+      <EntityTypeMapping TypeName="DRSModel.owner">
+        <MappingFragment StoreEntitySet="owners">
+          <ScalarProperty Name="owner_status" ColumnName="owner_status" />
+          <ScalarProperty Name="owner_last_modified_by" ColumnName="owner_last_modified_by" />
+          <ScalarProperty Name="owner_last_modified_date" ColumnName="owner_last_modified_date" />
+          <ScalarProperty Name="owner_created_by" ColumnName="owner_created_by" />
+          <ScalarProperty Name="owner_created_date" ColumnName="owner_created_date" />
+          <ScalarProperty Name="owner_tele" ColumnName="owner_tele" />
+          <ScalarProperty Name="owner_address" ColumnName="owner_address" />
+          <ScalarProperty Name="owner_nic" ColumnName="owner_nic" />
+          <ScalarProperty Name="owner_name" ColumnName="owner_name" />
+          <ScalarProperty Name="owner_id" ColumnName="owner_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="radio_station">
+      <EntityTypeMapping TypeName="DRSModel.radio_station">
+        <MappingFragment StoreEntitySet="radio_station">
+          <ScalarProperty Name="mcs_status" ColumnName="mcs_status" />
+          <ScalarProperty Name="mcs_last_modified_by" ColumnName="mcs_last_modified_by" />
+          <ScalarProperty Name="mcs_last_modified_date" ColumnName="mcs_last_modified_date" />
+          <ScalarProperty Name="mcs_created_by" ColumnName="mcs_created_by" />
+          <ScalarProperty Name="mcs_created_date" ColumnName="mcs_created_date" />
+          <ScalarProperty Name="mcs_radio_equipment_place_date" ColumnName="mcs_radio_equipment_place_date" />
+          <ScalarProperty Name="mcs_radio_equipment" ColumnName="mcs_radio_equipment" />
+          <ScalarProperty Name="mcs_location" ColumnName="mcs_location" />
+          <ScalarProperty Name="mcs_callsign" ColumnName="mcs_callsign" />
+          <ScalarProperty Name="mcs_id" ColumnName="mcs_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="registrations">
+      <EntityTypeMapping TypeName="DRSModel.registration">
+        <MappingFragment StoreEntitySet="registrations">
+          <ScalarProperty Name="registration_status" ColumnName="registration_status" />
+          <ScalarProperty Name="registration_last_modified_by" ColumnName="registration_last_modified_by" />
+          <ScalarProperty Name="registration_last_modified_date" ColumnName="registration_last_modified_date" />
+          <ScalarProperty Name="registration_created_by" ColumnName="registration_created_by" />
+          <ScalarProperty Name="registration_created_date" ColumnName="registration_created_date" />
+          <ScalarProperty Name="registration_description" ColumnName="registration_description" />
+          <ScalarProperty Name="registration_code" ColumnName="registration_code" />
+          <ScalarProperty Name="registration_id" ColumnName="registration_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="DRSModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="user_status" ColumnName="user_status" />
+          <ScalarProperty Name="user_last_modified_by" ColumnName="user_last_modified_by" />
+          <ScalarProperty Name="user_last_modified_date" ColumnName="user_last_modified_date" />
+          <ScalarProperty Name="user_created_by" ColumnName="user_created_by" />
+          <ScalarProperty Name="user_created_date" ColumnName="user_created_date" />
+          <ScalarProperty Name="mcs_id" ColumnName="mcs_id" />
+          <ScalarProperty Name="user_username" ColumnName="user_username" />
+          <ScalarProperty Name="user_tele" ColumnName="user_tele" />
+          <ScalarProperty Name="user_address" ColumnName="user_address" />
+          <ScalarProperty Name="user_nic" ColumnName="user_nic" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vessel_owner_ref">
+      <EntityTypeMapping TypeName="DRSModel.vessel_owner_ref">
+        <MappingFragment StoreEntitySet="vessel_owner_ref">
+          <ScalarProperty Name="vessel_id" ColumnName="vessel_id" />
+          <ScalarProperty Name="owner_id" ColumnName="owner_id" />
+          <ScalarProperty Name="vessel_owner_ref_id" ColumnName="vessel_owner_ref_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vessels">
+      <EntityTypeMapping TypeName="DRSModel.vessel">
+        <MappingFragment StoreEntitySet="vessels">
+          <ScalarProperty Name="district_id" ColumnName="district_id" />
+          <ScalarProperty Name="registration_id" ColumnName="registration_id" />
+          <ScalarProperty Name="vessel_status" ColumnName="vessel_status" />
+          <ScalarProperty Name="vessel_last_modified_by" ColumnName="vessel_last_modified_by" />
+          <ScalarProperty Name="vessel_last_modified_date" ColumnName="vessel_last_modified_date" />
+          <ScalarProperty Name="vessel_created_by" ColumnName="vessel_created_by" />
+          <ScalarProperty Name="vessel_created_date" ColumnName="vessel_created_date" />
+          <ScalarProperty Name="vessel_loa" ColumnName="vessel_loa" />
+          <ScalarProperty Name="vessel_color" ColumnName="vessel_color" />
+          <ScalarProperty Name="vessel_name" ColumnName="vessel_name" />
+          <ScalarProperty Name="vessel_pending_approval" ColumnName="vessel_pending_approval" />
+          <ScalarProperty Name="vessel_no" ColumnName="vessel_no" />
+          <ScalarProperty Name="vessel_id" ColumnName="vessel_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="error_log">
+      <EntityTypeMapping TypeName="DRSModel.error_log">
+        <MappingFragment StoreEntitySet="error_log">
+          <ScalarProperty Name="error_remarks" ColumnName="error_remarks" />
+          <ScalarProperty Name="error_exception" ColumnName="error_exception" />
+          <ScalarProperty Name="error_method_name" ColumnName="error_method_name" />
+          <ScalarProperty Name="error_controller_name" ColumnName="error_controller_name" />
+          <ScalarProperty Name="error_no" ColumnName="error_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

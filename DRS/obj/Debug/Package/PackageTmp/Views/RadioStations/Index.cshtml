@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DRS.DataBase.radio_station>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MCS Centers</h2>
+
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+
+@if (Request.IsAuthenticated)
+{
+    if (Context.User.IsInRole("Admin"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", "RadioStations", htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" })
+        </p>
+    }
+}
+
+<div class="code-cut">
+    @Html.Grid(Model).Columns(Columns =>
+{
+    Columns.Add(c => c.mcs_location).Titled("MCS Center Location").Filterable(true);
+    Columns.Add(c => c.mcs_callsign).Titled("Callsign").Filterable(true);
+    Columns.Add(c => c.mcs_radio_equipment).Titled("Radio Equipment").Filterable(true);
+    Columns.Add(c => c.mcs_radio_equipment_place_date).Titled("Radio Equipment Place Date").Filterable(true);
+
+    if (Request.IsAuthenticated)
+    {
+        if (Context.User.IsInRole("Admin"))
+        {
+            Columns.Add()
+                .Titled("")
+                .SetWidth(10)
+                .Filterable(true)
+                .Sanitized(false)
+                .Encoded(false)
+                .RenderValueAs(c => Html.ActionLink("Edit", "Edit", "RadioStations", new { id = c.mcs_id }, htmlAttributes: new { @class = "btn btn-warning btn-primary btn-sm" })
+                .ToHtmlString());
+            Columns.Add()
+                .Titled("")
+                .SetWidth(10)
+                .Filterable(true)
+                .Sanitized(false)
+                .Encoded(false)
+                .RenderValueAs(c => Html.ActionLink("Details", "Details", "RadioStations", new { id = c.mcs_id }, htmlAttributes: new { @class = "btn btn-info btn-primary btn-sm" })
+                .ToHtmlString());
+            Columns.Add()
+                .Titled("")
+                .SetWidth(10)
+                .Filterable(true)
+                .Sanitized(false)
+                .Encoded(false)
+                .RenderValueAs(c => Html.ActionLink("Delete", "Delete", "RadioStations", new { id = c.mcs_id }, htmlAttributes: new { @class = "btn btn-danger btn-primary btn-sm" })
+                .ToHtmlString());
+        }
+
+        else
+        {
+            Columns.Add()
+                .Titled("")
+                .SetWidth(10)
+                .Filterable(true)
+                .Sanitized(false)
+                .Encoded(false)
+                .RenderValueAs(c => Html.ActionLink("Details", "Details", "RadioStations", new { id = c.mcs_id }, htmlAttributes: new { @class = "btn btn-info btn-primary btn-sm" })
+                .ToHtmlString());
+        }
+    }
+
+
+}).WithPaging(10).Sortable().Filterable()
+</div>
+
+

@@ -1,0 +1,217 @@
+﻿@model DRS.DataBase.d_detail
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.d_detail_id)
+    @Html.HiddenFor(model => model.vessel_id)
+    @Html.HiddenFor(model => model.d_detail_action_taken)
+    @Html.HiddenFor(model => model.d_detail_remarks)
+    @Html.HiddenFor(model => model.d_detail_created_date)
+    @Html.HiddenFor(model => model.d_detail_created_by)
+    @Html.HiddenFor(model => model.d_detail_status)
+
+    <div class="form-horizontal">
+        <h4>Report</h4>
+        <hr />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+        <table>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.radio_station.mcs_location, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    <p></p>@Html.DropDownListFor(model => model.mcs_id, (SelectList)ViewBag.MCS, "Select MCS Center", htmlAttributes: new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr><td><br /><td></tr>
+
+            <tr>
+                <td>
+                    <hr />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Departure Details :</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.d_detail_departure_date, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_departure_date, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+
+                <td>
+                    @Html.LabelFor(model => model.d_detail_departure_time, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_departure_time, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+
+                <td>
+                    @Html.LabelFor(model => model.d_detail_departure_location, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_departure_location, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+            <tr><td><br /><td></tr>
+
+            <tr>
+                <td>
+                    <hr />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Distress Details :</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.distress.distress_name, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    <p></p>@Html.DropDownListFor(model => model.distress_id, (SelectList)ViewBag.Distress, "Select Type", htmlAttributes: new { @class = "form-control" })
+                </td>
+
+                <td>
+                    @Html.LabelFor(model => model.d_detail_nature_of_distress, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_nature_of_distress, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+            <tr><td><br /><td></tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.d_detail_lkp_lat_deg, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_lkp_lat_deg, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+
+                <td>
+                    @Html.LabelFor(model => model.d_detail_lkp_lat_min, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_lkp_lat_min, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+
+                <td>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.d_detail_lkp_lat_direction, (SelectList)ViewBag.LattitudeDirections, "Select", htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </td>
+            </tr>
+            <tr><td><br /><td></tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.d_detail_lkp_long_deg, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_lkp_long_deg, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+
+                <td>
+                    @Html.LabelFor(model => model.d_detail_lkp_long_min, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_lkp_long_min, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+
+                <td>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.d_detail_lkp_long_direction, (SelectList)ViewBag.LongitudeDirections, "Select", htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </td>
+            </tr>
+            <tr><td><br /><td></tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.d_detail_lkp_date, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_lkp_date, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+
+                <td>
+                    @Html.LabelFor(model => model.d_detail_lkp_time, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_lkp_time, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+            <tr><td><br /><td></tr>
+
+            <tr>
+                <td>
+                    <hr />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Other Details :</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.d_detail_no_of_crew, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_no_of_crew, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+
+                <td>
+                    @Html.LabelFor(model => model.d_detail_names_of_crew, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_names_of_crew, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+
+                <td>
+                    @Html.LabelFor(model => model.d_detail_communication_freqency, htmlAttributes: new { @class = "control-label col-md-12" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.d_detail_communication_freqency, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+            </tr>
+            <tr><td><br /><td></tr>
+
+        </table>
+        <hr />
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

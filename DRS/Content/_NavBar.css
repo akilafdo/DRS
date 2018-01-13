@@ -1,0 +1,24 @@
+﻿.ul {
+ margin: 0px; padding: 0px; list-style: none; font-family: arial;
+}
+
+.ul li {
+ float: left; width: 100px; height: 40px; background-color: #19BD9B; line-height: 40px; text-align: center;
+}
+
+ul li a {
+ text-decoration: none; color: white; display: block;
+}
+
+ul li a:hover {
+ text-decoration: none; background-color: white;
+}
+
+ul li ul li{
+ display: none;
+}
+
+ul li:hover ul li {
+ display: block;
+}
+

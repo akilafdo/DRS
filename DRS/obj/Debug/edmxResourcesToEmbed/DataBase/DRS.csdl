@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DRSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DRSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="d_detail" EntityType="DRSModel.d_detail" />
+    <EntitySet Name="distresses" EntityType="DRSModel.distress" />
+    <EntitySet Name="districts" EntityType="DRSModel.district" />
+    <EntitySet Name="licences" EntityType="DRSModel.licence" />
+    <EntitySet Name="owners" EntityType="DRSModel.owner" />
+    <EntitySet Name="radio_station" EntityType="DRSModel.radio_station" />
+    <EntitySet Name="registrations" EntityType="DRSModel.registration" />
+    <EntitySet Name="users" EntityType="DRSModel.user" />
+    <EntitySet Name="vessel_owner_ref" EntityType="DRSModel.vessel_owner_ref" />
+    <EntitySet Name="vessels" EntityType="DRSModel.vessel" />
+    <AssociationSet Name="FK_d_detail_distress" Association="DRSModel.FK_d_detail_distress">
+      <End Role="distress" EntitySet="distresses" />
+      <End Role="d_detail" EntitySet="d_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_d_detail_radio_station" Association="DRSModel.FK_d_detail_radio_station">
+      <End Role="radio_station" EntitySet="radio_station" />
+      <End Role="d_detail" EntitySet="d_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_d_detail_vessel" Association="DRSModel.FK_d_detail_vessel">
+      <End Role="vessel" EntitySet="vessels" />
+      <End Role="d_detail" EntitySet="d_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_district" Association="DRSModel.FK_vessel_district">
+      <End Role="district" EntitySet="districts" />
+      <End Role="vessel" EntitySet="vessels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_licence_vessel" Association="DRSModel.FK_licence_vessel">
+      <End Role="vessel" EntitySet="vessels" />
+      <End Role="licence" EntitySet="licences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_owner_ref_owner" Association="DRSModel.FK_vessel_owner_ref_owner">
+      <End Role="owner" EntitySet="owners" />
+      <End Role="vessel_owner_ref" EntitySet="vessel_owner_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_radio_station" Association="DRSModel.FK_user_radio_station">
+      <End Role="radio_station" EntitySet="radio_station" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_registration" Association="DRSModel.FK_vessel_registration">
+      <End Role="registration" EntitySet="registrations" />
+      <End Role="vessel" EntitySet="vessels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_owner_ref_vessel" Association="DRSModel.FK_vessel_owner_ref_vessel">
+      <End Role="vessel" EntitySet="vessels" />
+      <End Role="vessel_owner_ref" EntitySet="vessel_owner_ref" />
+    </AssociationSet>
+    <EntitySet Name="error_log" EntityType="DRSModel.error_log" />
+  </EntityContainer>
+  <EntityType Name="d_detail">
+    <Key>
+      <PropertyRef Name="d_detail_id" />
+    </Key>
+    <Property Name="d_detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="d_detail_lkp_lat_deg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_lkp_lat_min" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_lkp_lat_direction" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_lkp_long_deg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_lkp_long_min" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_lkp_long_direction" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_lkp_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="d_detail_lkp_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="d_detail_communication_freqency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_nature_of_distress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_no_of_crew" Type="Int32" Nullable="false" />
+    <Property Name="d_detail_names_of_crew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_action_taken" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_departure_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="d_detail_departure_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="d_detail_departure_location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="d_detail_created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="d_detail_created_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_last_modified_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="d_detail_last_modified_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_status" Type="Int32" Nullable="false" />
+    <Property Name="vessel_id" Type="Int32" Nullable="false" />
+    <Property Name="distress_id" Type="Int32" Nullable="false" />
+    <Property Name="mcs_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="distress" Relationship="DRSModel.FK_d_detail_distress" FromRole="d_detail" ToRole="distress" />
+    <NavigationProperty Name="radio_station" Relationship="DRSModel.FK_d_detail_radio_station" FromRole="d_detail" ToRole="radio_station" />
+    <NavigationProperty Name="vessel" Relationship="DRSModel.FK_d_detail_vessel" FromRole="d_detail" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="distress">
+    <Key>
+      <PropertyRef Name="distress_id" />
+    </Key>
+    <Property Name="distress_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="distress_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="distress_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="distress_created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="distress_created_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="distress_last_modified_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="distress_last_modified_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="distress_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="d_detail" Relationship="DRSModel.FK_d_detail_distress" FromRole="distress" ToRole="d_detail" />
+  </EntityType>
+  <EntityType Name="district">
+    <Key>
+      <PropertyRef Name="district_id" />
+    </Key>
+    <Property Name="district_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="district_code" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="district_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="district_created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="district_created_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="district_last_modified_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="district_last_modified_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="district_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vessels" Relationship="DRSModel.FK_vessel_district" FromRole="district" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="licence">
+    <Key>
+      <PropertyRef Name="licence_id" />
+    </Key>
+    <Property Name="licence_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="licence_callsign" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="licence_date_from" Type="DateTime" Precision="3" />
+    <Property Name="licence_date_to" Type="DateTime" Precision="3" />
+    <Property Name="licence_trc_fileno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="licence_created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="licence_created_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="licence_last_modified_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="licence_last_modified_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="licence_status" Type="Int32" Nullable="false" />
+    <Property Name="vessel_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vessel" Relationship="DRSModel.FK_licence_vessel" FromRole="licence" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="owner">
+    <Key>
+      <PropertyRef Name="owner_id" />
+    </Key>
+    <Property Name="owner_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="owner_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="owner_nic" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="owner_address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="owner_tele" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="owner_created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="owner_created_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="owner_last_modified_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="owner_last_modified_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="owner_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vessel_owner_ref" Relationship="DRSModel.FK_vessel_owner_ref_owner" FromRole="owner" ToRole="vessel_owner_ref" />
+  </EntityType>
+  <EntityType Name="radio_station">
+    <Key>
+      <PropertyRef Name="mcs_id" />
+    </Key>
+    <Property Name="mcs_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mcs_callsign" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mcs_location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mcs_radio_equipment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mcs_radio_equipment_place_date" Type="DateTime" Precision="3" />
+    <Property Name="mcs_created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="mcs_created_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mcs_last_modified_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="mcs_last_modified_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mcs_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="d_detail" Relationship="DRSModel.FK_d_detail_radio_station" FromRole="radio_station" ToRole="d_detail" />
+    <NavigationProperty Name="users" Relationship="DRSModel.FK_user_radio_station" FromRole="radio_station" ToRole="user" />
+  </EntityType>
+  <EntityType Name="registration">
+    <Key>
+      <PropertyRef Name="registration_id" />
+    </Key>
+    <Property Name="registration_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="registration_code" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="registration_description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="registration_created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="registration_created_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="registration_last_modified_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="registration_last_modified_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="registration_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vessels" Relationship="DRSModel.FK_vessel_registration" FromRole="registration" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_nic" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="user_address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_tele" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="user_username" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mcs_id" Type="Int32" Nullable="false" />
+    <Property Name="user_created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="user_created_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_last_modified_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="user_last_modified_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="radio_station" Relationship="DRSModel.FK_user_radio_station" FromRole="user" ToRole="radio_station" />
+  </EntityType>
+  <EntityType Name="vessel_owner_ref">
+    <Key>
+      <PropertyRef Name="vessel_owner_ref_id" />
+    </Key>
+    <Property Name="vessel_owner_ref_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="owner_id" Type="Int32" Nullable="false" />
+    <Property Name="vessel_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="owner" Relationship="DRSModel.FK_vessel_owner_ref_owner" FromRole="vessel_owner_ref" ToRole="owner" />
+    <NavigationProperty Name="vessel" Relationship="DRSModel.FK_vessel_owner_ref_vessel" FromRole="vessel_owner_ref" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="vessel">
+    <Key>
+      <PropertyRef Name="vessel_id" />
+    </Key>
+    <Property Name="vessel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vessel_no" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vessel_pending_approval" Type="Int32" Nullable="false" />
+    <Property Name="vessel_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vessel_color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vessel_loa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vessel_created_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vessel_created_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vessel_last_modified_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vessel_last_modified_by" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vessel_status" Type="Int32" Nullable="false" />
+    <Property Name="registration_id" Type="Int32" Nullable="false" />
+    <Property Name="district_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="d_detail" Relationship="DRSModel.FK_d_detail_vessel" FromRole="vessel" ToRole="d_detail" />
+    <NavigationProperty Name="district" Relationship="DRSModel.FK_vessel_district" FromRole="vessel" ToRole="district" />
+    <NavigationProperty Name="licences" Relationship="DRSModel.FK_licence_vessel" FromRole="vessel" ToRole="licence" />
+    <NavigationProperty Name="registration" Relationship="DRSModel.FK_vessel_registration" FromRole="vessel" ToRole="registration" />
+    <NavigationProperty Name="vessel_owner_ref" Relationship="DRSModel.FK_vessel_owner_ref_vessel" FromRole="vessel" ToRole="vessel_owner_ref" />
+  </EntityType>
+  <Association Name="FK_d_detail_distress">
+    <End Type="DRSModel.distress" Role="distress" Multiplicity="1" />
+    <End Type="DRSModel.d_detail" Role="d_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="distress">
+        <PropertyRef Name="distress_id" />
+      </Principal>
+      <Dependent Role="d_detail">
+        <PropertyRef Name="distress_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_d_detail_radio_station">
+    <End Type="DRSModel.radio_station" Role="radio_station" Multiplicity="1" />
+    <End Type="DRSModel.d_detail" Role="d_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="radio_station">
+        <PropertyRef Name="mcs_id" />
+      </Principal>
+      <Dependent Role="d_detail">
+        <PropertyRef Name="mcs_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_d_detail_vessel">
+    <End Type="DRSModel.vessel" Role="vessel" Multiplicity="1" />
+    <End Type="DRSModel.d_detail" Role="d_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessel">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="d_detail">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_district">
+    <End Type="DRSModel.district" Role="district" Multiplicity="1" />
+    <End Type="DRSModel.vessel" Role="vessel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="district">
+        <PropertyRef Name="district_id" />
+      </Principal>
+      <Dependent Role="vessel">
+        <PropertyRef Name="district_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_licence_vessel">
+    <End Type="DRSModel.vessel" Role="vessel" Multiplicity="1" />
+    <End Type="DRSModel.licence" Role="licence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessel">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="licence">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_owner_ref_owner">
+    <End Type="DRSModel.owner" Role="owner" Multiplicity="1" />
+    <End Type="DRSModel.vessel_owner_ref" Role="vessel_owner_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="owner">
+        <PropertyRef Name="owner_id" />
+      </Principal>
+      <Dependent Role="vessel_owner_ref">
+        <PropertyRef Name="owner_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_radio_station">
+    <End Type="DRSModel.radio_station" Role="radio_station" Multiplicity="1" />
+    <End Type="DRSModel.user" Role="user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="radio_station">
+        <PropertyRef Name="mcs_id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="mcs_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_registration">
+    <End Type="DRSModel.registration" Role="registration" Multiplicity="1" />
+    <End Type="DRSModel.vessel" Role="vessel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registration">
+        <PropertyRef Name="registration_id" />
+      </Principal>
+      <Dependent Role="vessel">
+        <PropertyRef Name="registration_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_owner_ref_vessel">
+    <End Type="DRSModel.vessel" Role="vessel" Multiplicity="1" />
+    <End Type="DRSModel.vessel_owner_ref" Role="vessel_owner_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessel">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="vessel_owner_ref">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="error_log">
+    <Key>
+      <PropertyRef Name="error_no" />
+    </Key>
+    <Property Name="error_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="error_controller_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="error_method_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="error_exception" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="error_remarks" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

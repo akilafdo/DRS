@@ -1,0 +1,82 @@
+﻿@model IEnumerable<DRS.DataBase.vessel_owner_ref>
+
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Owners</h2>
+
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+
+@using (Html.BeginForm("Index", "Owners", FormMethod.Get))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.DropDownList("SearchType", (SelectList)ViewBag.SearchOwnerType, "Select Type", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                <span style="margin:5px"></span>
+            </td>
+            <td>
+                @Html.TextBox("SearchText", "", new { @class = "form-control" })
+            </td>
+            <td>
+                <span style="margin:5px"></span>
+                <input type="submit" value="Search" class="btn btn-info btn-primary btn-sm" />
+            </td>
+        </tr>
+    </table>
+}
+
+<div class="code-cut">
+    @Html.Grid(Model).Columns(Columns =>
+{
+    Columns.Add(c => c.owner.owner_name).Titled("Owner Name").Filterable(true);
+    Columns.Add(c => c.owner.owner_address).Titled("Resident Address").Filterable(true);
+    Columns.Add(c => c.owner.owner_tele).Titled("Telephone No").Filterable(true);
+    Columns.Add(c => c.owner.owner_nic).Titled("NIC No").Filterable(true);
+
+    Columns.Add()
+         .Titled("")
+         .SetWidth(10)
+         .Filterable(true)
+         .Sanitized(false)
+         .Encoded(false)
+         .RenderValueAs(c => Html.ActionLink("Add", "MultipleVessels", "Owners", new { id = c.owner_id }, htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" }));
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Vessel", "Vessels", "Owners", new { id = c.owner_id }, htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" }));
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Edit", "Edit", "Owners", new { id = c.owner_id }, htmlAttributes: new { @class = "btn btn-warning btn-primary btn-sm" }));
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Details", "Details", "Owners", new { id = c.owner_id }, htmlAttributes: new { @class = "btn btn-info btn-primary btn-sm" }));
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Delete", "Delete", "Owners", new { id = c.owner_id }, htmlAttributes: new { @class = "btn btn-danger btn-primary btn-sm" }));
+
+}).WithPaging(10).Sortable().Filterable()
+</div>

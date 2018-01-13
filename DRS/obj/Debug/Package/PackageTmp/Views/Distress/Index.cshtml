@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DRS.DataBase.distress>
+
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Distress</h2>
+
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Distress", htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" })
+</p>
+
+<div class="code-cut">
+    @Html.Grid(Model).Columns(Columns =>
+{
+    Columns.Add(c => c.distress_name).Titled("Distress Name").Filterable(true);
+    Columns.Add(c => c.distress_description).Titled("Description").Filterable(true);
+
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Edit", "Edit", "Distress", new { id = c.distress_id }, htmlAttributes: new { @class = "btn btn-warning btn-primary btn-sm" })
+        .ToHtmlString());
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Details", "Details", "Distress", new { id = c.distress_id }, htmlAttributes: new { @class = "btn btn-info btn-primary btn-sm" })
+        .ToHtmlString());
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Delete", "Delete", "Distress", new { id = c.distress_id }, htmlAttributes: new { @class = "btn btn-danger btn-primary btn-sm" })
+        .ToHtmlString());
+
+}).WithPaging(10).Sortable().Filterable()
+</div>

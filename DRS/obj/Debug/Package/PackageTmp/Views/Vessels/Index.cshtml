@@ -1,0 +1,108 @@
+﻿@model IEnumerable<DRS.DataBase.vessel>
+
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vessels</h2>
+
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Vessels", htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" })
+</p>
+
+<table>
+    <tr>
+        <td>
+            <span style="margin:320px"></span>
+            <div class="search-bar">
+                @using (Html.BeginForm("Index", "Vessels", FormMethod.Get))
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                @if (Context.User.IsInRole("Admin"))
+                                {
+                                    @Html.TextBox("SearchText", "", new { @class = "form-control", @id = "vessel_no" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("SearchText", "", new { @class = "form-control", @id = "vessel_no_imul" })
+                                }
+                            </td>
+                            <td>
+                                <span style="margin:5px"></span>
+                                <input type="submit" value="Search" class="btn btn-info btn-primary btn-sm" />
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="code-cut">
+    @Html.Grid(Model).Columns(Columns =>
+{
+Columns.Add(c => c.registration.registration_code).Titled("Registration").Filterable(true);
+Columns.Add(c => c.vessel_no).Titled("Vessel No").Filterable(true);
+Columns.Add(c => c.district.district_code).Titled("District").Filterable(true);
+
+    Columns.Add()
+        .Titled("")
+        .SetWidth(15)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => @Html.ActionLink("Add", "SharedOwnership", "Vessels", new { id = c.vessel_id }, htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" }));
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Owners", "Owners", "Vessels", new { id = c.vessel_id }, htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" }));
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Edit", "Edit", "Vessels", new { id = c.vessel_id }, htmlAttributes: new { @class = "btn btn-warning btn-primary btn-sm" }));
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Details", "Details", "Vessels", new { id = c.vessel_id }, htmlAttributes: new { @class = "btn btn-info btn-primary btn-sm" }));
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Delete", "Delete", "Vessels", new { id = c.vessel_id }, htmlAttributes: new { @class = "btn btn-danger btn-primary btn-sm" }));
+
+}).WithPaging(10).Sortable().Filterable()
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Scripts/jquery.maskedinput.min.js"></script>
+
+    <script type="text/javascript">
+        $.mask.definitions['D'] = "[/^A-Z*/]";   //District must only accept English letters
+        $(function () {
+            $("#vessel_no").mask("DDDD-A-9999DDD");
+            $("#vessel_no_imul").mask("IMUL-A-9999DDD");
+        });
+    </script>
+}

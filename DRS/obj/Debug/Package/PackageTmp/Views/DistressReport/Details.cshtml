@@ -1,0 +1,201 @@
+﻿@model DRS.DataBase.d_detail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Report</h4>
+    <hr />
+    <table>
+
+        <tr>
+            <td>
+                <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Vessel and MCS Center Details :</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.vessel.vessel_no) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.vessel.registration.registration_code)@Html.DisplayFor(model => model.vessel.vessel_no)@Html.DisplayFor(model => model.vessel.district.district_code)</td>
+            <td><span style="margin:70px"></span></td>
+
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.radio_station.mcs_location) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.radio_station.mcs_location)</td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.radio_station.mcs_callsign) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.radio_station.mcs_callsign)</td>
+        </tr>
+        <tr><td><br /><hr /><td></tr>
+
+        <tr>
+            <td>
+                <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Distress and Depature Details :</p>
+            </td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.distress.distress_name) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.distress.distress_name)</td>
+            <td><span style="margin:70px"></span></td>
+
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_nature_of_distress) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td style="width:auto">@Html.DisplayFor(model => model.d_detail_nature_of_distress)</td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_departure_date) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.d_detail_departure_date)</td>
+            <td><span style="margin:70px"></span></td>
+
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_departure_time) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.d_detail_departure_time)</td>
+            <td><span style="margin:70px"></span></td>
+
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_departure_location) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td style="width:auto">@Html.DisplayFor(model => model.d_detail_departure_location)</td>
+        </tr>
+        <tr><td><br /><hr /><td></tr>
+
+        <tr>
+            <td>
+                <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Last known position Details :</p>
+            </td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-style:italic; font-weight:bold">Last known position Lattitude Data</td>
+        </tr>
+        <tr><td><br /><td></tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.d_detail_lkp_lat_deg):@Html.DisplayFor(model => model.d_detail_lkp_lat_min)@Html.DropDownListFor(model => model.d_detail_lkp_lat_direction, (SelectList)ViewBag.LattitudeDirections, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })</td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-style:italic; font-weight:bold">Last known position Longitude Data</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.d_detail_lkp_long_deg):@Html.DisplayFor(model => model.d_detail_lkp_long_min)@Html.DropDownListFor(model => model.d_detail_lkp_long_direction, (SelectList)ViewBag.LongitudeDirections, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })</td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_lkp_date) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.d_detail_lkp_date)</td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_lkp_time) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.d_detail_lkp_time)</td>
+        </tr>
+        <tr><td><br /><hr /><td></tr>
+
+        <tr>
+            <td>
+                <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Other Details :</p>
+            </td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_communication_freqency) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.d_detail_communication_freqency)</td>
+            <td><span style="margin:70px"></span></td>
+
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_no_of_crew) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td>@Html.DisplayFor(model => model.d_detail_no_of_crew)</td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_names_of_crew) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td style="width:auto">@Html.DisplayFor(model => model.d_detail_names_of_crew)</td>
+        </tr>
+        <tr><td><br /><hr /><td></tr>
+
+        <tr>
+            <td>
+                <p style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Remarks :</p>
+            </td>
+        </tr>
+        <tr><td><br /><td></tr>
+
+        <tr>
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_action_taken) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td style="width:auto">@Html.DisplayFor(model => model.d_detail_action_taken)</td>
+            <td><span style="margin:70px"></span></td>
+
+            <td style="font-weight:bold">@Html.DisplayNameFor(model => model.d_detail_remarks) :-</td>
+            <td><span style="margin:5px"></span></td>
+            <td style="width:auto">@Html.DisplayFor(model => model.d_detail_remarks)</td>
+        </tr>
+
+    </table>
+
+    <hr />
+    <br />
+    <h4>Record Details</h4>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.d_detail_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.d_detail_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.d_detail_created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.d_detail_created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.d_detail_last_modified_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.d_detail_last_modified_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.d_detail_last_modified_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.d_detail_last_modified_by)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.d_detail_id }, htmlAttributes: new { @class = "btn btn-warning" })
+</p>

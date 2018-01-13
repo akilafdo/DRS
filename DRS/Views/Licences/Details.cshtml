@@ -1,0 +1,98 @@
+﻿@model DRS.DataBase.licence
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>License</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vessel.vessel_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vessel.registration.registration_code)
+            @Html.DisplayFor(model => model.vessel.vessel_no)
+            @Html.DisplayFor(model => model.vessel.district.district_code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licence_callsign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licence_callsign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licence_date_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licence_date_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licence_date_to)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licence_date_to)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licence_trc_fileno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licence_trc_fileno)
+        </dd>
+    </dl>
+
+    <br />
+    <h4>Record Details.</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.licence_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licence_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licence_created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licence_created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licence_last_modified_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licence_last_modified_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licence_last_modified_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licence_last_modified_by)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.licence_id }, htmlAttributes: new { @class = "btn btn-warning" })
+</p>

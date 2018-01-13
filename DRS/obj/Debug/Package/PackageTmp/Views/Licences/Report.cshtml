@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Generate Report for TRC</h2>
+
+<link href="~/Content/fm.tagator.jquery.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/fm.tagator.jquery.js"></script>
+
+<div>
+    <p>
+        Use below text box and input all Vessels that you need as a tag, in order to generate TRC report.
+    </p>
+</div>
+
+<div>
+    <form method="post">
+        <div>
+            <input id="example" name="example" value="IMUL-A-" placeholder="Please input Vessel No" class="form-control">
+            <input type="submit" value="Submit" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+
+
+<script>
+    $('#example').tagator({
+            autocomplete: ['IMUL-A-']
+    });
+</script>

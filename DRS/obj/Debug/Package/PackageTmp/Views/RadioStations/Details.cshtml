@@ -1,0 +1,96 @@
+﻿@model DRS.DataBase.radio_station
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MCS Center</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_callsign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_callsign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_radio_equipment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_radio_equipment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_radio_equipment_place_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_radio_equipment_place_date)
+        </dd>
+    </dl>
+
+    <br />
+    <h4>Record Details.</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_last_modified_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_last_modified_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_last_modified_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_last_modified_by)
+        </dd>
+
+    </dl>
+</div>
+
+@if (Request.IsAuthenticated)
+{
+    if (Context.User.IsInRole("Admin"))
+    {
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.mcs_id }, htmlAttributes: new { @class = "btn btn-warning" })
+        </p>
+
+    }
+}

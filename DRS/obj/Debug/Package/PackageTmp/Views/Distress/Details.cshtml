@@ -1,0 +1,72 @@
+﻿@model DRS.DataBase.distress
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Distress</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_description)
+        </dd>
+    </dl>
+
+    <br />
+    <h4>Record Details.</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_last_modified_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_last_modified_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_last_modified_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_last_modified_by)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.distress_id }, htmlAttributes: new { @class = "btn btn-warning" })
+</p>

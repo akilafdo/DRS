@@ -1,0 +1,105 @@
+﻿@model IEnumerable<DRS.DataBase.licence>
+
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>License</h2>
+
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+
+<p>
+    <table>
+        <tr>
+            <td>@Html.ActionLink("Create Invoice", "InvoiceState", "Licences", htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" }) @Html.ActionLink("Create Renewal", "Create", "Licences", htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" }) @Html.ActionLink("TRC Report", "Report", "Licences", null, htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" })</td>
+        </tr>
+    </table>
+</p>
+
+<table>
+    <tr>
+        <td>
+            <span style="margin:320px"></span>
+            <div class="search-bar">
+                @using (Html.BeginForm("Index", "Licences", FormMethod.Get))
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.TextBox("SearchText", "", new { @class = "form-control", @id = "vessel_no" })
+                            </td>
+                            <td>
+                                <span style="margin:2px"></span>
+                                <input type="submit" value="Search" class="btn btn-info btn-primary btn-sm" />
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="code-cut">
+    @Html.Grid(Model).Columns(Columns =>
+{
+    Columns.Add(c => c.vessel.registration.registration_code).Titled("Registration").Filterable(true);
+    Columns.Add(c => c.vessel.vessel_no).Titled("Vessel No").Filterable(true);
+    Columns.Add(c => c.vessel.district.district_code).Titled("District").Filterable(true);
+    Columns.Add(c => c.licence_callsign).Titled("License Callsign").Filterable(true);
+    Columns.Add(c => c.licence_date_from).Titled("Date From").Filterable(true);
+    Columns.Add(c => c.licence_date_to).Titled("Date To").Filterable(true);
+    Columns.Add(c => c.licence_trc_fileno).Titled("TRC File No").Filterable(true);
+
+        Columns.Add()
+            .Titled("")
+            .SetWidth(10)
+            .Filterable(true)
+            .Sanitized(false)
+            .Encoded(false)
+            .RenderValueAs(c => Html.ActionLink("Update", "Update", "Licences", new { id = c.vessel_id, licence_id = c.licence_id }, htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" })
+            .ToHtmlString());
+        Columns.Add()
+            .Titled("")
+            .SetWidth(10)
+            .Filterable(true)
+            .Sanitized(false)
+            .Encoded(false)
+            .RenderValueAs(c => Html.ActionLink("Edit", "Edit", "Licences", new { id = c.licence_id }, htmlAttributes: new { @class = "btn btn-warning btn-primary btn-sm" })
+            .ToHtmlString());
+        Columns.Add()
+            .Titled("")
+            .SetWidth(10)
+            .Filterable(true)
+            .Sanitized(false)
+            .Encoded(false)
+            .RenderValueAs(c => Html.ActionLink("Details", "Details", "Licences", new { id = c.licence_id }, htmlAttributes: new { @class = "btn btn-info btn-primary btn-sm" })
+            .ToHtmlString());
+        Columns.Add()
+            .Titled("")
+            .SetWidth(10)
+            .Filterable(true)
+            .Sanitized(false)
+            .Encoded(false)
+            .RenderValueAs(c => Html.ActionLink("Delete", "Delete", "Licences", new { id = c.licence_id }, htmlAttributes: new { @class = "btn btn-danger btn-primary btn-sm" })
+            .ToHtmlString());
+
+    }).WithPaging(10).Sortable().Filterable()
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Scripts/jquery.maskedinput.min.js"></script>
+
+    <script type="text/javascript">
+        $.mask.definitions['D'] = "[/^A-Z*/]";   //District must only accept English letters
+        $(function () {
+            $("#vessel_no").mask("IMUL-A-9999DDD");
+        });
+    </script>
+}

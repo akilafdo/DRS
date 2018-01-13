@@ -1,0 +1,125 @@
+﻿@model DRS.DataBase.licence
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+<h4>License</h4>
+
+<table>
+    <tr>
+        <td>
+            <span style="margin:320px"></span>
+            <div class="search-bar">
+                @using (Html.BeginForm("Create", "Licences", FormMethod.Get))
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                Vessel No
+                            </td>
+                            <td>
+                                <span style="margin:5px"></span>
+                            </td>
+                            <td>
+                                @Html.TextBox("SearchText", "", new { @class = "form-control", @id = "vessel_no" })
+                            </td>
+                            <td>
+                                <span style="margin:5px"></span>
+                                <input type="submit" value="Search" class="btn btn-info" />
+                            </td>
+                            <td><span style="margin:5px"></span></td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.vessel_id, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.vessel_id)
+    
+    <div class="form-horizontal">
+        <hr />
+        @if (TempData["licence_callsign"] != null)
+        {
+            <p style="color:red">@TempData["licence_callsign"]</p>
+        }
+
+        @if (TempData["vessel_id_found"] != null)
+        {
+            <p style="color:darkgreen">@TempData["vessel_id_found"]</p>
+        }
+
+        @if (TempData["vessel_id_not_found"] != null)
+        {
+            <p style="color:red">@TempData["vessel_id_not_found"]</p>
+        }
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.licence_callsign, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.licence_callsign, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.licence_callsign, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.licence_date_from, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.licence_date_from, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.licence_date_from, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.licence_date_to, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.licence_date_to, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.licence_date_to, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.licence_trc_fileno, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.licence_trc_fileno, new { htmlAttributes = new { @class = "form-control", @id = "trc" } })
+                @Html.ValidationMessageFor(model => model.licence_trc_fileno, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Scripts/jquery.maskedinput.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#trc").mask("MM/9999/99/HF");
+        });
+
+        $.mask.definitions['D'] = "[/^A-Z*/]";   //District must only accept English letters
+        $(function () {
+            $("#vessel_no").mask("IMUL-A-9999DDD");
+        });
+    </script>
+
+}

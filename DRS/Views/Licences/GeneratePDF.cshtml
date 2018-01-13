@@ -1,0 +1,127 @@
+﻿@model IEnumerable<DRS.DataBase.vessel_owner_ref>
+
+@{
+    ViewBag.Title = "Applications";
+    Layout = null;
+}
+
+<h2>Report For Telecommunications Regulatory Commission of Sri Lanka</h2>
+<h4>@DateTime.Now</h4>
+
+<table border="1">
+    <tr>
+        <th>@Html.DisplayName("No")</th>
+        <th>
+            @Html.DisplayNameFor(model => model.vessel.vessel_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.owner.owner_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.owner.owner_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.owner.owner_tele)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.owner.owner_nic)
+        </th>
+        <th>
+            @Html.DisplayName("Application Type")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.vessel.vessel_pending_approval==1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vessel.registration.registration_code)
+                    @Html.DisplayFor(modelItem => item.vessel.vessel_no)
+                    @Html.DisplayFor(modelItem => item.vessel.district.district_code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_tele)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_nic)
+                </td>
+                <td>
+                    @Html.DisplayName("Application")
+                </td>
+            </tr>
+        }
+
+        else if (item.vessel.vessel_pending_approval == 2)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vessel.registration.registration_code)
+                    @Html.DisplayFor(modelItem => item.vessel.vessel_no)
+                    @Html.DisplayFor(modelItem => item.vessel.district.district_code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_tele)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_nic)
+                </td>
+                <td>
+                    @Html.DisplayName("Renewal")
+                </td>
+            </tr>
+        }
+
+        else if (item.vessel.vessel_pending_approval == 3)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vessel.registration.registration_code)
+                    @Html.DisplayFor(modelItem => item.vessel.vessel_no)
+                    @Html.DisplayFor(modelItem => item.vessel.district.district_code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_tele)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner.owner_nic)
+                </td>
+                <td>
+                    @Html.DisplayName("No Status")
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+<script>
+    var tables = document.getElementsByTagName('table');
+    var table = tables[tables.length - 1];
+    var rows = table.rows;
+    for(var i = 0, td; i < rows.length; i++){
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(i + 1));
+        rows[i+1].insertBefore(td, rows[i+1].firstChild);
+    }
+</script>

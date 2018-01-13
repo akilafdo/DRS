@@ -1,0 +1,84 @@
+﻿@model DRS.DataBase.distress
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Distress</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_description)
+        </dd>
+    </dl>
+
+    <br />
+    <h4>Record Details</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_last_modified_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_last_modified_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distress_last_modified_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distress_last_modified_by)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.distress_id)
+        @Html.HiddenFor(model => model.distress_name)
+        @Html.HiddenFor(model => model.distress_description)
+        @Html.HiddenFor(model => model.distress_created_date)
+        @Html.HiddenFor(model => model.distress_created_by)
+        @Html.HiddenFor(model => model.distress_status)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    }
+</div>

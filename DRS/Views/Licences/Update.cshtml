@@ -1,0 +1,72 @@
+﻿@model DRS.DataBase.licence
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.licence_id)
+    @Html.HiddenFor(model => model.vessel_id)
+    @Html.HiddenFor(model => model.licence_callsign)
+    @Html.HiddenFor(model => model.licence_trc_fileno)
+
+
+    <div class="form-horizontal">
+        <h4>License</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_no, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10"><p></p>
+                @Html.DisplayFor(model => model.vessel.registration.registration_code)
+                @Html.DisplayFor(model => model.vessel.vessel_no)
+                @Html.DisplayFor(model => model.vessel.district.district_code)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.licence_callsign, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10"><p></p>
+                @Html.DisplayFor(model => model.licence_callsign, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.licence_trc_fileno, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10"><p></p>
+                @Html.DisplayFor(model => model.licence_trc_fileno, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <hr />
+        <h4>New License Period</h4>
+        <div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.licence_date_from, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.licence_date_from, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.licence_date_from, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.licence_date_to, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.licence_date_to, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.licence_date_to, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}

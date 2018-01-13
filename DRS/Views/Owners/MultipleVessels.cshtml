@@ -1,0 +1,101 @@
+﻿@model DRS.DataBase.vessel_owner_ref
+
+@{
+    ViewBag.Title = "MultipleVessels";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.owner_id)
+    
+    <div class="form-horizontal">
+        <h4>Multiple Vessels</h4>
+        <hr />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+        @if (TempData["vessel_no"] != null)
+        {
+            <p style="color:red">@TempData["vessel_no"]</p>
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.registration_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.vessel.registration_id, (SelectList)ViewBag.Registration, "Select Code", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_no, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vessel.vessel_no, new { htmlAttributes = new { @class = "form-control", @id = "vessel_no_digits" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.district_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.vessel.district_id, (SelectList)ViewBag.Districts, "Select Code", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_pending_approval, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.vessel.vessel_pending_approval, (SelectList)ViewBag.Applications, "Select Type", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vessel.vessel_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.vessel.vessel_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_color, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vessel.vessel_color, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.vessel.vessel_color, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_loa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vessel.vessel_loa, new { htmlAttributes = new { @class = "form-control", @id = "vessel_loa" } })
+                @Html.ValidationMessageFor(model => model.vessel.vessel_loa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/Scripts/jquery.maskedinput.min.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+            $("#vessel_no_digits").mask("9999");
+        });
+
+        $(function () {
+            $("#vessel_loa").mask("ft:999 inch:99");
+        });
+</script>
+
+}

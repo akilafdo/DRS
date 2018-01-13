@@ -1,0 +1,92 @@
+﻿@model DRS.DataBase.d_detail
+@{
+    ViewBag.Title = "DistressReportPDF";
+    Layout = null;
+}
+
+
+<table>
+    <tr>
+        <td><h2>Letter Head</h2></td>
+    </tr>
+    <tr>
+        <td><h2 style="text-decoration:underline">FAX MESSAGE</h2></td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td style="margin:5px"><h4>FROM</h4></td>
+        <td><h5>: Director General, Department of Fisheries and Aquatic Resources</h5></td>
+    </tr>
+    <tr>
+        <td style="margin:5px"><h4>TO</h4></td>
+        <td><h5>: @ViewBag.report</h5></td>
+    </tr>
+    <tr>
+        <td style="margin:5px"><h4>SUBJECT</h4></td>
+        <td><h5>: Fishing vessel "@Html.DisplayFor(model => model.vessel.vessel_name)"</h5></td>
+    </tr>
+    <tr><td><br /></td></tr>
+</table>
+
+<table>
+    <tr>
+        <td><h5>It has been reported fishing vessel "@Html.DisplayFor(model => model.vessel.vessel_name)" has faced a distress.</h5></td>
+    </tr>
+    <tr>
+        <td><h5>Type of distress : @Html.DisplayFor(model => model.distress.distress_name)</h5></td>
+    </tr>
+    <tr><td><br /></td></tr>
+</table>
+
+<h3>Details of F/V "@Html.DisplayFor(model => model.vessel.vessel_name)"</h3>
+
+<table border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.vessel.vessel_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.owner.owner_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.owner.owner_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.owner.owner_tele)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.owner.owner_nic)
+        </th>
+        <th>
+            @Html.DisplayName("Application Type")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.vessel.registration.registration_code)
+                @Html.DisplayFor(modelItem => item.vessel.vessel_no)
+                @Html.DisplayFor(modelItem => item.vessel.district.district_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.owner.owner_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.owner.owner_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.owner.owner_tele)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.owner.owner_nic)
+            </td>
+            <td>
+                @Html.DisplayName("Application")
+            </td>
+        </tr>
+    }

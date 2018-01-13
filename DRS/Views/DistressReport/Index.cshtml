@@ -1,0 +1,115 @@
+﻿@model IEnumerable<DRS.DataBase.d_detail>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Distress Details</h2>
+
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+
+<p>
+    @Html.ActionLink("Create New", "CreateVessel","DistressReport", htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" })
+</p>
+
+<table>
+    <tr>
+        <td>
+            <span style="margin:320px"></span>
+            <div class="search-bar">
+                @using (Html.BeginForm("Index", "DistressReport", FormMethod.Get))
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.TextBox("SearchText", "", new { @class = "form-control", @id = "vessel_no" })
+                            </td>
+                            <td>
+                                <span style="margin:2px"></span>
+                                <input type="submit" value="Search" class="btn btn-info btn-primary btn-sm" />
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="code-cut">
+    @Html.Grid(Model).Columns(Columns =>
+{
+    Columns.Add(c => c.vessel.registration.registration_code).Titled("Registration").Filterable(true);
+    Columns.Add(c => c.vessel.vessel_no).Titled("Vessel No").Filterable(true);
+    Columns.Add(c => c.vessel.district.district_code).Titled("District").Filterable(true);
+    Columns.Add(c => c.distress.distress_name).Titled("Distress").Filterable(true);
+    Columns.Add(c => c.d_detail_action_taken).Titled("Action Taken").Filterable(true);
+    Columns.Add(c => c.d_detail_remarks).Titled("Remarks").Filterable(true);
+
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Edit", "Edit", "DistressReport", new { id = c.d_detail_id }, htmlAttributes: new { @class = "btn btn-warning btn-primary btn-sm" })
+        .ToHtmlString());
+    Columns.Add()
+        .Titled("")
+        .SetWidth(10)
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Details", "Details", "DistressReport", new { id = c.d_detail_id }, htmlAttributes: new { @class = "btn btn-info btn-primary btn-sm" })
+        .ToHtmlString());
+
+    if (Request.IsAuthenticated)
+    {
+        if (Context.User.IsInRole("Admin"))
+        {
+            Columns.Add()
+                .Titled("")
+                .SetWidth(10)
+                .Filterable(true)
+                .Sanitized(false)
+                .Encoded(false)
+                .RenderValueAs(c => Html.ActionLink("Action", "Action", "DistressReport", new { id = c.d_detail_id }, htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" })
+                .ToHtmlString());
+            Columns.Add()
+                .Titled("")
+                .SetWidth(10)
+                .Filterable(true)
+                .Sanitized(false)
+                .Encoded(false)
+                .RenderValueAs(c => Html.ActionLink("Delete", "Delete", "DistressReport", new { id = c.d_detail_id }, htmlAttributes: new { @class = "btn btn-danger btn-primary btn-sm" })
+                .ToHtmlString());
+            Columns.Add()
+                .Titled("")
+                .SetWidth(10)
+                .Filterable(true)
+                .Sanitized(false)
+                .Encoded(false)
+                .RenderValueAs(c => Html.ActionLink("Report", "Report", "DistressReport", new { id = c.d_detail_id }, htmlAttributes: new { @class = "btn btn-success btn-primary btn-sm" })
+                .ToHtmlString());
+        }
+    }
+
+}).WithPaging(10).Sortable().Filterable()
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Scripts/jquery.maskedinput.min.js"></script>
+
+    <script type="text/javascript">
+        $.mask.definitions['D'] = "[/^A-Z*/]";   //District must only accept English letters
+        $(function () {
+            $("#vessel_no").mask("DDDD-A-9999DDD");
+        });
+    </script>
+}
+

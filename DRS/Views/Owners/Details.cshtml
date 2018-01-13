@@ -1,0 +1,88 @@
+﻿@model DRS.DataBase.vessel_owner_ref
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Owner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_tele)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_tele)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_nic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_nic)
+        </dd>
+    </dl>
+
+    <br />
+    <h4>Record Details</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_last_modified_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_last_modified_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owner.owner_last_modified_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owner.owner_last_modified_by)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.owner_id }, htmlAttributes: new { @class = "btn btn-warning" })
+</p>

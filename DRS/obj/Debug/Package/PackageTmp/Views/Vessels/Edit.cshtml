@@ -1,0 +1,92 @@
+﻿@model DRS.DataBase.vessel_owner_ref
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.vessel.vessel_id)
+    @Html.HiddenFor(model => model.vessel.registration_id)
+    @Html.HiddenFor(model => model.vessel.vessel_no)
+    @Html.HiddenFor(model => model.vessel.district_id)
+    @Html.HiddenFor(model => model.vessel.vessel_created_date)
+    @Html.HiddenFor(model => model.vessel.vessel_created_by)
+    @Html.HiddenFor(model => model.vessel.vessel_status)
+
+    <div class="form-horizontal">
+        <h4>Vessel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @if (TempData["vessel_no"] != null)
+        {
+            <p style="color:red">@TempData["vessel_no"]</p>
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_no, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10"><p></p>
+                @Html.DisplayFor(model => model.vessel.registration.registration_code)
+                @Html.DisplayFor(model => model.vessel.vessel_no)
+                @Html.DisplayFor(model => model.vessel.district.district_code)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_pending_approval, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10"><p></p>
+                @Html.DropDownListFor(model => model.vessel.vessel_pending_approval, (SelectList)ViewBag.Applications, "Select Type", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.vessel.vessel_pending_approval, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vessel.vessel_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.vessel.vessel_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_color, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vessel.vessel_color, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.vessel.vessel_color, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.vessel.vessel_loa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vessel.vessel_loa, new { htmlAttributes = new { @class = "form-control", @id = "vessel_loa" } })
+                @Html.ValidationMessageFor(model => model.vessel.vessel_loa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/Scripts/jquery.maskedinput.min.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+            $("#vessel_loa").mask("ft:999 inch:99");
+        });
+</script>
+
+}

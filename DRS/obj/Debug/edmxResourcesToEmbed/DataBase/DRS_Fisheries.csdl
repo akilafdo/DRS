@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DRSFisheriesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="d_detail">
+    <Key>
+      <PropertyRef Name="d_detail_id" />
+    </Key>
+    <Property Name="d_detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="d_detail_lkp_lat_deg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_detail_lkp_lat_min" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_detail_lkp_lat_direction" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_detail_lkp_long_deg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_detail_lkp_long_min" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_detail_lkp_long_direction" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_detail_lkp_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="d_detail_lkp_time" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="d_detail_communication_freqency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_nature_of_distress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_no_of_crew" Type="Int32" />
+    <Property Name="d_detail_names_of_crew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_action_taken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_detail_remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="d_detail_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="d_detail_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_detail_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="d_detail_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_detail_status" Type="Int32" Nullable="false" />
+    <Property Name="vessel_id" Type="Int32" Nullable="false" />
+    <Property Name="distress_id" Type="Int32" Nullable="false" />
+    <Property Name="mcs_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="distress" Relationship="Self.FK_d_detail_distress" FromRole="d_detail" ToRole="distress" />
+    <NavigationProperty Name="radio_station" Relationship="Self.FK_d_detail_radio_station" FromRole="d_detail" ToRole="radio_station" />
+    <NavigationProperty Name="vessel" Relationship="Self.FK_d_detail_vessel" FromRole="d_detail" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="departure">
+    <Key>
+      <PropertyRef Name="departure_id" />
+    </Key>
+    <Property Name="departure_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="departure_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="departure_time" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="departure_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="departure_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="departure_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="departure_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="departure_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="departure_status" Type="Int32" Nullable="false" />
+    <Property Name="vessel_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vessel" Relationship="Self.FK_departure_vessel" FromRole="departure" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="distress">
+    <Key>
+      <PropertyRef Name="distress_id" />
+    </Key>
+    <Property Name="distress_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="distress_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="distress_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="distress_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="distress_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="distress_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="distress_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="distress_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="d_detail" Relationship="Self.FK_d_detail_distress" FromRole="distress" ToRole="d_detail" />
+  </EntityType>
+  <EntityType Name="district">
+    <Key>
+      <PropertyRef Name="district_id" />
+    </Key>
+    <Property Name="district_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="district_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="district_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="district_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="district_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="district_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="district_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="district_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vessels" Relationship="Self.FK_vessel_district" FromRole="district" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="group">
+    <Key>
+      <PropertyRef Name="group_id" />
+    </Key>
+    <Property Name="group_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="group_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="group_authority_ref" Relationship="Self.FK_group_authority_ref_group" FromRole="group" ToRole="group_authority_ref" />
+    <NavigationProperty Name="user_group_ref" Relationship="Self.FK_user_group_ref_group" FromRole="group" ToRole="user_group_ref" />
+  </EntityType>
+  <EntityType Name="group_authority">
+    <Key>
+      <PropertyRef Name="group_authority_id" />
+    </Key>
+    <Property Name="group_authority_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_authority_permission" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="group_authority_permission_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="group_authority_ref" Relationship="Self.FK_group_authority_ref_group_authority" FromRole="group_authority" ToRole="group_authority_ref" />
+  </EntityType>
+  <EntityType Name="group_authority_ref">
+    <Key>
+      <PropertyRef Name="group_authority_ref_id" />
+    </Key>
+    <Property Name="group_authority_ref_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <Property Name="group_authority_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="group" Relationship="Self.FK_group_authority_ref_group" FromRole="group_authority_ref" ToRole="group" />
+    <NavigationProperty Name="group_authority" Relationship="Self.FK_group_authority_ref_group_authority" FromRole="group_authority_ref" ToRole="group_authority" />
+  </EntityType>
+  <EntityType Name="licence">
+    <Key>
+      <PropertyRef Name="licence_id" />
+    </Key>
+    <Property Name="licence_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="licence_callsign" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="licence_date_from" Type="DateTime" Precision="0" />
+    <Property Name="licence_date_to" Type="DateTime" Precision="0" />
+    <Property Name="licence_trc_fileno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="licence_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="licence_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="licence_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="licence_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="licence_status" Type="Int32" Nullable="false" />
+    <Property Name="vessel_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vessel" Relationship="Self.FK_licence_vessel" FromRole="licence" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="owner">
+    <Key>
+      <PropertyRef Name="owner_id" />
+    </Key>
+    <Property Name="owner_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="owner_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="owner_nic" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="owner_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="owner_tele" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="owner_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="owner_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="owner_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="owner_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="owner_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vessel_owner_ref" Relationship="Self.FK_vessel_owner_ref_owner" FromRole="owner" ToRole="vessel_owner_ref" />
+  </EntityType>
+  <EntityType Name="radio_station">
+    <Key>
+      <PropertyRef Name="mcs_id" />
+    </Key>
+    <Property Name="mcs_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mcs_callsign" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mcs_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mcs_radio_equipment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mcs_radio_equipment_place_date" Type="DateTime" Precision="0" />
+    <Property Name="mcs_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="mcs_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mcs_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="mcs_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mcs_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="d_detail" Relationship="Self.FK_d_detail_radio_station" FromRole="radio_station" ToRole="d_detail" />
+    <NavigationProperty Name="users" Relationship="Self.FK_user_radio_station" FromRole="radio_station" ToRole="user" />
+  </EntityType>
+  <EntityType Name="registration">
+    <Key>
+      <PropertyRef Name="registration_id" />
+    </Key>
+    <Property Name="registration_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="registration_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="registration_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="registration_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="registration_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="registration_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="registration_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="registration_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="vessels" Relationship="Self.FK_vessel_registration" FromRole="registration" ToRole="vessel" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="user_nic" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="user_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="user_tele" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="user_username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="user_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="user_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mcs_id" Type="Int32" Nullable="false" />
+    <Property Name="user_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="user_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="user_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="user_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="user_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="radio_station" Relationship="Self.FK_user_radio_station" FromRole="user" ToRole="radio_station" />
+    <NavigationProperty Name="user_group_ref" Relationship="Self.FK_user_group_ref_user" FromRole="user" ToRole="user_group_ref" />
+  </EntityType>
+  <EntityType Name="user_group_ref">
+    <Key>
+      <PropertyRef Name="user_group_ref_id" />
+    </Key>
+    <Property Name="user_group_ref_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="group" Relationship="Self.FK_user_group_ref_group" FromRole="user_group_ref" ToRole="group" />
+    <NavigationProperty Name="user" Relationship="Self.FK_user_group_ref_user" FromRole="user_group_ref" ToRole="user" />
+  </EntityType>
+  <EntityType Name="vessel">
+    <Key>
+      <PropertyRef Name="vessel_id" />
+    </Key>
+    <Property Name="vessel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vessel_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="vessel_pending_approval" Type="Int32" Nullable="false" />
+    <Property Name="vessel_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vessel_color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vessel_loa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vessel_created_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="vessel_created_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="vessel_last_modified_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="vessel_last_modified_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="vessel_status" Type="Int32" Nullable="false" />
+    <Property Name="registration_id" Type="Int32" Nullable="false" />
+    <Property Name="district_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="d_detail" Relationship="Self.FK_d_detail_vessel" FromRole="vessel" ToRole="d_detail" />
+    <NavigationProperty Name="departures" Relationship="Self.FK_departure_vessel" FromRole="vessel" ToRole="departure" />
+    <NavigationProperty Name="district" Relationship="Self.FK_vessel_district" FromRole="vessel" ToRole="district" />
+    <NavigationProperty Name="licences" Relationship="Self.FK_licence_vessel" FromRole="vessel" ToRole="licence" />
+    <NavigationProperty Name="registration" Relationship="Self.FK_vessel_registration" FromRole="vessel" ToRole="registration" />
+    <NavigationProperty Name="vessel_owner_ref" Relationship="Self.FK_vessel_owner_ref_vessel" FromRole="vessel" ToRole="vessel_owner_ref" />
+  </EntityType>
+  <EntityType Name="vessel_owner_ref">
+    <Key>
+      <PropertyRef Name="vessel_owner_ref_id" />
+    </Key>
+    <Property Name="vessel_owner_ref_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="owner_id" Type="Int32" Nullable="false" />
+    <Property Name="vessel_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="owner" Relationship="Self.FK_vessel_owner_ref_owner" FromRole="vessel_owner_ref" ToRole="owner" />
+    <NavigationProperty Name="vessel" Relationship="Self.FK_vessel_owner_ref_vessel" FromRole="vessel_owner_ref" ToRole="vessel" />
+  </EntityType>
+  <Association Name="FK_d_detail_distress">
+    <End Role="distress" Type="Self.distress" Multiplicity="1" />
+    <End Role="d_detail" Type="Self.d_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="distress">
+        <PropertyRef Name="distress_id" />
+      </Principal>
+      <Dependent Role="d_detail">
+        <PropertyRef Name="distress_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_d_detail_radio_station">
+    <End Role="radio_station" Type="Self.radio_station" Multiplicity="1" />
+    <End Role="d_detail" Type="Self.d_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="radio_station">
+        <PropertyRef Name="mcs_id" />
+      </Principal>
+      <Dependent Role="d_detail">
+        <PropertyRef Name="mcs_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_d_detail_vessel">
+    <End Role="vessel" Type="Self.vessel" Multiplicity="1" />
+    <End Role="d_detail" Type="Self.d_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessel">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="d_detail">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_departure_vessel">
+    <End Role="vessel" Type="Self.vessel" Multiplicity="1" />
+    <End Role="departure" Type="Self.departure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessel">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="departure">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_district">
+    <End Role="district" Type="Self.district" Multiplicity="1" />
+    <End Role="vessel" Type="Self.vessel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="district">
+        <PropertyRef Name="district_id" />
+      </Principal>
+      <Dependent Role="vessel">
+        <PropertyRef Name="district_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_authority_ref_group">
+    <End Role="group" Type="Self.group" Multiplicity="1" />
+    <End Role="group_authority_ref" Type="Self.group_authority_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="group">
+        <PropertyRef Name="group_id" />
+      </Principal>
+      <Dependent Role="group_authority_ref">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_group_ref_group">
+    <End Role="group" Type="Self.group" Multiplicity="1" />
+    <End Role="user_group_ref" Type="Self.user_group_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="group">
+        <PropertyRef Name="group_id" />
+      </Principal>
+      <Dependent Role="user_group_ref">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_authority_ref_group_authority">
+    <End Role="group_authority" Type="Self.group_authority" Multiplicity="1" />
+    <End Role="group_authority_ref" Type="Self.group_authority_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="group_authority">
+        <PropertyRef Name="group_authority_id" />
+      </Principal>
+      <Dependent Role="group_authority_ref">
+        <PropertyRef Name="group_authority_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_licence_vessel">
+    <End Role="vessel" Type="Self.vessel" Multiplicity="1" />
+    <End Role="licence" Type="Self.licence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessel">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="licence">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_owner_ref_owner">
+    <End Role="owner" Type="Self.owner" Multiplicity="1" />
+    <End Role="vessel_owner_ref" Type="Self.vessel_owner_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="owner">
+        <PropertyRef Name="owner_id" />
+      </Principal>
+      <Dependent Role="vessel_owner_ref">
+        <PropertyRef Name="owner_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_radio_station">
+    <End Role="radio_station" Type="Self.radio_station" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="radio_station">
+        <PropertyRef Name="mcs_id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="mcs_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_registration">
+    <End Role="registration" Type="Self.registration" Multiplicity="1" />
+    <End Role="vessel" Type="Self.vessel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registration">
+        <PropertyRef Name="registration_id" />
+      </Principal>
+      <Dependent Role="vessel">
+        <PropertyRef Name="registration_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_group_ref_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="user_group_ref" Type="Self.user_group_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="user_group_ref">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_owner_ref_vessel">
+    <End Role="vessel" Type="Self.vessel" Multiplicity="1" />
+    <End Role="vessel_owner_ref" Type="Self.vessel_owner_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessel">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="vessel_owner_ref">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DRSFisheriesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="d_detail" EntityType="Self.d_detail" />
+    <EntitySet Name="departures" EntityType="Self.departure" />
+    <EntitySet Name="distresses" EntityType="Self.distress" />
+    <EntitySet Name="districts" EntityType="Self.district" />
+    <EntitySet Name="groups" EntityType="Self.group" />
+    <EntitySet Name="group_authority" EntityType="Self.group_authority" />
+    <EntitySet Name="group_authority_ref" EntityType="Self.group_authority_ref" />
+    <EntitySet Name="licences" EntityType="Self.licence" />
+    <EntitySet Name="owners" EntityType="Self.owner" />
+    <EntitySet Name="radio_station" EntityType="Self.radio_station" />
+    <EntitySet Name="registrations" EntityType="Self.registration" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="user_group_ref" EntityType="Self.user_group_ref" />
+    <EntitySet Name="vessels" EntityType="Self.vessel" />
+    <EntitySet Name="vessel_owner_ref" EntityType="Self.vessel_owner_ref" />
+    <AssociationSet Name="FK_d_detail_distress" Association="Self.FK_d_detail_distress">
+      <End Role="distress" EntitySet="distresses" />
+      <End Role="d_detail" EntitySet="d_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_d_detail_radio_station" Association="Self.FK_d_detail_radio_station">
+      <End Role="radio_station" EntitySet="radio_station" />
+      <End Role="d_detail" EntitySet="d_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_d_detail_vessel" Association="Self.FK_d_detail_vessel">
+      <End Role="vessel" EntitySet="vessels" />
+      <End Role="d_detail" EntitySet="d_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_departure_vessel" Association="Self.FK_departure_vessel">
+      <End Role="vessel" EntitySet="vessels" />
+      <End Role="departure" EntitySet="departures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_district" Association="Self.FK_vessel_district">
+      <End Role="district" EntitySet="districts" />
+      <End Role="vessel" EntitySet="vessels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_authority_ref_group" Association="Self.FK_group_authority_ref_group">
+      <End Role="group" EntitySet="groups" />
+      <End Role="group_authority_ref" EntitySet="group_authority_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_group_ref_group" Association="Self.FK_user_group_ref_group">
+      <End Role="group" EntitySet="groups" />
+      <End Role="user_group_ref" EntitySet="user_group_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_authority_ref_group_authority" Association="Self.FK_group_authority_ref_group_authority">
+      <End Role="group_authority" EntitySet="group_authority" />
+      <End Role="group_authority_ref" EntitySet="group_authority_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_licence_vessel" Association="Self.FK_licence_vessel">
+      <End Role="vessel" EntitySet="vessels" />
+      <End Role="licence" EntitySet="licences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_owner_ref_owner" Association="Self.FK_vessel_owner_ref_owner">
+      <End Role="owner" EntitySet="owners" />
+      <End Role="vessel_owner_ref" EntitySet="vessel_owner_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_radio_station" Association="Self.FK_user_radio_station">
+      <End Role="radio_station" EntitySet="radio_station" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_registration" Association="Self.FK_vessel_registration">
+      <End Role="registration" EntitySet="registrations" />
+      <End Role="vessel" EntitySet="vessels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_group_ref_user" Association="Self.FK_user_group_ref_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="user_group_ref" EntitySet="user_group_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_owner_ref_vessel" Association="Self.FK_vessel_owner_ref_vessel">
+      <End Role="vessel" EntitySet="vessels" />
+      <End Role="vessel_owner_ref" EntitySet="vessel_owner_ref" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

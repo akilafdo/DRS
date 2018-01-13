@@ -1,0 +1,102 @@
+﻿@model DRS.DataBase.radio_station
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MCS Center</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_callsign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_callsign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_radio_equipment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_radio_equipment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_radio_equipment_place_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_radio_equipment_place_date)
+        </dd>
+    </dl>
+
+    <br />
+    <h4>Record Details</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_last_modified_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_last_modified_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mcs_last_modified_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mcs_last_modified_by)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.mcs_id)
+        @Html.HiddenFor(model => model.mcs_location)
+        @Html.HiddenFor(model => model.mcs_callsign)
+        @Html.HiddenFor(model => model.mcs_radio_equipment)
+        @Html.HiddenFor(model => model.mcs_radio_equipment_place_date)
+        @Html.HiddenFor(model => model.mcs_created_date)
+        @Html.HiddenFor(model => model.mcs_created_by)
+        @Html.HiddenFor(model => model.mcs_status)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    }
+</div>

@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DRSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="d_detail">
+    <Key>
+      <PropertyRef Name="d_detail_id" />
+    </Key>
+    <Property Name="d_detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="d_detail_lkp_lat_deg" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="d_detail_lkp_lat_min" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="d_detail_lkp_lat_direction" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="d_detail_lkp_long_deg" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="d_detail_lkp_long_min" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="d_detail_lkp_long_direction" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="d_detail_lkp_date" Type="datetime" Nullable="false" />
+    <Property Name="d_detail_lkp_time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="d_detail_communication_freqency" Type="nvarchar(max)" />
+    <Property Name="d_detail_nature_of_distress" Type="nvarchar(max)" />
+    <Property Name="d_detail_no_of_crew" Type="int" Nullable="false" />
+    <Property Name="d_detail_names_of_crew" Type="nvarchar(max)" />
+    <Property Name="d_detail_action_taken" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="d_detail_remarks" Type="nvarchar(max)" />
+    <Property Name="d_detail_departure_date" Type="datetime" Nullable="false" />
+    <Property Name="d_detail_departure_time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="d_detail_departure_location" Type="varchar(max)" Nullable="false" />
+    <Property Name="d_detail_created_date" Type="datetime" Nullable="false" />
+    <Property Name="d_detail_created_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="d_detail_last_modified_date" Type="datetime" Nullable="false" />
+    <Property Name="d_detail_last_modified_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="d_detail_status" Type="int" Nullable="false" />
+    <Property Name="vessel_id" Type="int" Nullable="false" />
+    <Property Name="distress_id" Type="int" Nullable="false" />
+    <Property Name="mcs_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="distresses">
+    <Key>
+      <PropertyRef Name="distress_id" />
+    </Key>
+    <Property Name="distress_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="distress_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="distress_description" Type="nvarchar(max)" />
+    <Property Name="distress_created_date" Type="datetime" Nullable="false" />
+    <Property Name="distress_created_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="distress_last_modified_date" Type="datetime" Nullable="false" />
+    <Property Name="distress_last_modified_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="distress_status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="districts">
+    <Key>
+      <PropertyRef Name="district_id" />
+    </Key>
+    <Property Name="district_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="district_code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="district_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="district_created_date" Type="datetime" Nullable="false" />
+    <Property Name="district_created_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="district_last_modified_date" Type="datetime" Nullable="false" />
+    <Property Name="district_last_modified_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="district_status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="error_log">
+    <Key>
+      <PropertyRef Name="error_no" />
+    </Key>
+    <Property Name="error_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="error_controller_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="error_method_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="error_exception" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="error_remarks" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="licences">
+    <Key>
+      <PropertyRef Name="licence_id" />
+    </Key>
+    <Property Name="licence_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="licence_callsign" Type="nvarchar(max)" />
+    <Property Name="licence_date_from" Type="datetime" />
+    <Property Name="licence_date_to" Type="datetime" />
+    <Property Name="licence_trc_fileno" Type="nvarchar(max)" />
+    <Property Name="licence_created_date" Type="datetime" Nullable="false" />
+    <Property Name="licence_created_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="licence_last_modified_date" Type="datetime" Nullable="false" />
+    <Property Name="licence_last_modified_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="licence_status" Type="int" Nullable="false" />
+    <Property Name="vessel_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="owners">
+    <Key>
+      <PropertyRef Name="owner_id" />
+    </Key>
+    <Property Name="owner_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="owner_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="owner_nic" Type="nvarchar" MaxLength="15" />
+    <Property Name="owner_address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="owner_tele" Type="nvarchar" MaxLength="15" />
+    <Property Name="owner_created_date" Type="datetime" Nullable="false" />
+    <Property Name="owner_created_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="owner_last_modified_date" Type="datetime" Nullable="false" />
+    <Property Name="owner_last_modified_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="owner_status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="radio_station">
+    <Key>
+      <PropertyRef Name="mcs_id" />
+    </Key>
+    <Property Name="mcs_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mcs_callsign" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mcs_location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mcs_radio_equipment" Type="nvarchar(max)" />
+    <Property Name="mcs_radio_equipment_place_date" Type="datetime" />
+    <Property Name="mcs_created_date" Type="datetime" Nullable="false" />
+    <Property Name="mcs_created_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mcs_last_modified_date" Type="datetime" Nullable="false" />
+    <Property Name="mcs_last_modified_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mcs_status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="registrations">
+    <Key>
+      <PropertyRef Name="registration_id" />
+    </Key>
+    <Property Name="registration_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="registration_code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="registration_description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="registration_created_date" Type="datetime" Nullable="false" />
+    <Property Name="registration_created_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="registration_last_modified_date" Type="datetime" Nullable="false" />
+    <Property Name="registration_last_modified_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="registration_status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_nic" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="user_address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_tele" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="user_username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mcs_id" Type="int" Nullable="false" />
+    <Property Name="user_created_date" Type="datetime" Nullable="false" />
+    <Property Name="user_created_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_last_modified_date" Type="datetime" Nullable="false" />
+    <Property Name="user_last_modified_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vessel_owner_ref">
+    <Key>
+      <PropertyRef Name="vessel_owner_ref_id" />
+    </Key>
+    <Property Name="vessel_owner_ref_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="owner_id" Type="int" Nullable="false" />
+    <Property Name="vessel_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vessels">
+    <Key>
+      <PropertyRef Name="vessel_id" />
+    </Key>
+    <Property Name="vessel_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vessel_no" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="vessel_pending_approval" Type="int" Nullable="false" />
+    <Property Name="vessel_name" Type="nvarchar(max)" />
+    <Property Name="vessel_color" Type="nvarchar(max)" />
+    <Property Name="vessel_loa" Type="nvarchar(max)" />
+    <Property Name="vessel_created_date" Type="datetime" Nullable="false" />
+    <Property Name="vessel_created_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="vessel_last_modified_date" Type="datetime" Nullable="false" />
+    <Property Name="vessel_last_modified_by" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="vessel_status" Type="int" Nullable="false" />
+    <Property Name="registration_id" Type="int" Nullable="false" />
+    <Property Name="district_id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_d_detail_distress">
+    <End Role="distresses" Type="Self.distresses" Multiplicity="1" />
+    <End Role="d_detail" Type="Self.d_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="distresses">
+        <PropertyRef Name="distress_id" />
+      </Principal>
+      <Dependent Role="d_detail">
+        <PropertyRef Name="distress_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_d_detail_radio_station">
+    <End Role="radio_station" Type="Self.radio_station" Multiplicity="1" />
+    <End Role="d_detail" Type="Self.d_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="radio_station">
+        <PropertyRef Name="mcs_id" />
+      </Principal>
+      <Dependent Role="d_detail">
+        <PropertyRef Name="mcs_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_d_detail_vessel">
+    <End Role="vessels" Type="Self.vessels" Multiplicity="1" />
+    <End Role="d_detail" Type="Self.d_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessels">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="d_detail">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_licence_vessel">
+    <End Role="vessels" Type="Self.vessels" Multiplicity="1" />
+    <End Role="licences" Type="Self.licences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessels">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="licences">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_radio_station">
+    <End Role="radio_station" Type="Self.radio_station" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="radio_station">
+        <PropertyRef Name="mcs_id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="mcs_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_district">
+    <End Role="districts" Type="Self.districts" Multiplicity="1" />
+    <End Role="vessels" Type="Self.vessels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="districts">
+        <PropertyRef Name="district_id" />
+      </Principal>
+      <Dependent Role="vessels">
+        <PropertyRef Name="district_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_owner_ref_owner">
+    <End Role="owners" Type="Self.owners" Multiplicity="1" />
+    <End Role="vessel_owner_ref" Type="Self.vessel_owner_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="owners">
+        <PropertyRef Name="owner_id" />
+      </Principal>
+      <Dependent Role="vessel_owner_ref">
+        <PropertyRef Name="owner_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_owner_ref_vessel">
+    <End Role="vessels" Type="Self.vessels" Multiplicity="1" />
+    <End Role="vessel_owner_ref" Type="Self.vessel_owner_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vessels">
+        <PropertyRef Name="vessel_id" />
+      </Principal>
+      <Dependent Role="vessel_owner_ref">
+        <PropertyRef Name="vessel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vessel_registration">
+    <End Role="registrations" Type="Self.registrations" Multiplicity="1" />
+    <End Role="vessels" Type="Self.vessels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registrations">
+        <PropertyRef Name="registration_id" />
+      </Principal>
+      <Dependent Role="vessels">
+        <PropertyRef Name="registration_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DRSModelStoreContainer">
+    <EntitySet Name="d_detail" EntityType="Self.d_detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="distresses" EntityType="Self.distresses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="districts" EntityType="Self.districts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="error_log" EntityType="Self.error_log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="licences" EntityType="Self.licences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="owners" EntityType="Self.owners" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="radio_station" EntityType="Self.radio_station" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="registrations" EntityType="Self.registrations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vessel_owner_ref" EntityType="Self.vessel_owner_ref" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vessels" EntityType="Self.vessels" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_d_detail_distress" Association="Self.FK_d_detail_distress">
+      <End Role="distresses" EntitySet="distresses" />
+      <End Role="d_detail" EntitySet="d_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_d_detail_radio_station" Association="Self.FK_d_detail_radio_station">
+      <End Role="radio_station" EntitySet="radio_station" />
+      <End Role="d_detail" EntitySet="d_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_d_detail_vessel" Association="Self.FK_d_detail_vessel">
+      <End Role="vessels" EntitySet="vessels" />
+      <End Role="d_detail" EntitySet="d_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_licence_vessel" Association="Self.FK_licence_vessel">
+      <End Role="vessels" EntitySet="vessels" />
+      <End Role="licences" EntitySet="licences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_radio_station" Association="Self.FK_user_radio_station">
+      <End Role="radio_station" EntitySet="radio_station" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_district" Association="Self.FK_vessel_district">
+      <End Role="districts" EntitySet="districts" />
+      <End Role="vessels" EntitySet="vessels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_owner_ref_owner" Association="Self.FK_vessel_owner_ref_owner">
+      <End Role="owners" EntitySet="owners" />
+      <End Role="vessel_owner_ref" EntitySet="vessel_owner_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_owner_ref_vessel" Association="Self.FK_vessel_owner_ref_vessel">
+      <End Role="vessels" EntitySet="vessels" />
+      <End Role="vessel_owner_ref" EntitySet="vessel_owner_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vessel_registration" Association="Self.FK_vessel_registration">
+      <End Role="registrations" EntitySet="registrations" />
+      <End Role="vessels" EntitySet="vessels" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
