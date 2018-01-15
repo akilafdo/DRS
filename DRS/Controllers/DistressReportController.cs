@@ -315,11 +315,19 @@ namespace DRS.Controllers
         [HttpPost]
         public ActionResult Report(int id, string report, string radioOfficer, string dutyOfficer)
         {
+            owner owner = null;
             try
             {
+                owner = DistressReportControllerManager.getgetOwnerForFax(id);
+
                 ViewBag.report = report;
                 ViewBag.radioOfficer = radioOfficer;
                 ViewBag.dutyOfficer = dutyOfficer;
+
+                ViewBag.ownerName = owner.owner_name;
+                ViewBag.ownerAddress = owner.owner_address;
+                ViewBag.ownerTele = owner.owner_tele;
+
                 return new Rotativa.ViewAsPdf("DistressReportPDF", DistressReportControllerManager.getDistressReport(id)) { FileName = "FAX MESSAGE.pdf" };
             }
             catch (Exception ex)

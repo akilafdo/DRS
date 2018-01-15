@@ -132,6 +132,19 @@ namespace DRS.ControllerManagers.DistressReportControllerManager
             }
         }
 
+        //get owner data to Fax Message
+        public owner getgetOwnerForFax(int distressReportId)
+        {
+            try
+            {
+                return DistressReportService.getOwnerForFaxDB(distressReportId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         //set*Distress
         public SelectList getDistressSelectList()
         {

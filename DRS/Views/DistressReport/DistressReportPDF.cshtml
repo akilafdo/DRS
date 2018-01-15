@@ -7,86 +7,141 @@
 
 <table>
     <tr>
-        <td><h2>Letter Head</h2></td>
+        <td><img src="~/IMG_0927.JPG" height="380" width="1000"/></td>
     </tr>
+</table>
+
+<table>
     <tr>
-        <td><h2 style="text-decoration:underline">FAX MESSAGE</h2></td>
+        <td><span style="margin:350px"></span></td>
+        <td>@DateTime.Now</td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td><span style="margin:180px"></span></td><td><h2 style="text-decoration:underline">FAX MESSAGE</h2></td>
     </tr>
 </table>
 
 <table>
     <tr>
         <td style="margin:5px"><h4>FROM</h4></td>
-        <td><h5>: Director General, Department of Fisheries and Aquatic Resources</h5></td>
+        <td><h4>: Director General, Department of Fisheries and Aquatic Resources</h4></td>
     </tr>
     <tr>
         <td style="margin:5px"><h4>TO</h4></td>
-        <td><h5>: @ViewBag.report</h5></td>
+        <td><h4>: @ViewBag.report</h4></td>
     </tr>
     <tr>
         <td style="margin:5px"><h4>SUBJECT</h4></td>
-        <td><h5>: Fishing vessel "@Html.DisplayFor(model => model.vessel.vessel_name)"</h5></td>
+        <td><h4>: Fishing vessel "@Html.DisplayFor(model => model.vessel.vessel_name)"</h4></td>
+    </tr>
+    <tr><td><br /></td></tr>
+</table>
+
+
+
+
+
+<table>
+    <tr>
+        <td><h4>It has been reported fishing vessel "@Html.DisplayFor(model => model.vessel.vessel_name)" has faced a distress.</h4></td>
+    </tr>
+    <tr>
+        <td><h4>Type of distress : @Html.DisplayFor(model => model.distress.distress_name)</h4></td>
+    </tr>
+    <tr>
+        <td><h4>Nature of distress : @Html.DisplayFor(model => model.d_detail_nature_of_distress)</h4></td>
+    </tr>
+    <tr><td><br /></td></tr>
+</table>
+
+
+
+
+
+<h4>Details of F/V "@Html.DisplayFor(model => model.vessel.vessel_name)"</h4>
+
+<table>
+    <tr>
+        <td>Reg No : @Html.DisplayFor(model => model.vessel.registration.registration_code)@Html.DisplayFor(model => model.vessel.vessel_no)@Html.DisplayFor(model => model.vessel.district.district_code)</td>
+    </tr>
+    <tr>
+        <td>LOA    : @Html.DisplayFor(model => model.vessel.vessel_loa)</td>
+    </tr>
+    <tr>
+        <td>Color  : @Html.DisplayFor(model => model.vessel.vessel_color)</td>
+    </tr>
+    <tr>
+        <td>Date / Port od departure  : @Html.DisplayFor(model => model.d_detail_departure_date)</td>
+        <td>From</td>
+        <td>@Html.DisplayFor(model => model.d_detail_departure_location)</td>
+    </tr>
+    <tr>
+        <td>No of Crew   : @Html.DisplayFor(model => model.d_detail_no_of_crew)</td>
+    </tr>
+    <tr>
+        <td>Crew Names   : @Html.DisplayFor(model => model.d_detail_names_of_crew)</td>
+    </tr>
+    <tr>
+        <td>Position     :<b> @Html.DisplayFor(model => model.d_detail_lkp_lat_deg) @Html.DisplayFor(model => model.d_detail_lkp_lat_min)''
+            @if (Model.d_detail_lkp_lat_direction.Equals("1"))
+            {
+                @Html.DisplayName("North")
+            }
+            else
+            {
+                @Html.DisplayName("South")
+            }</b>
+        </td>
+        <td>/</td>
+        <td><b>@Html.DisplayFor(model => model.d_detail_lkp_long_deg) @Html.DisplayFor(model => model.d_detail_lkp_long_min)''
+            @if (Model.d_detail_lkp_lat_direction.Equals("2"))
+            {
+                @Html.DisplayName("East")
+            }
+            else
+            {
+                @Html.DisplayName("West")
+            }</b>
+        </td>
+    </tr>
+    <tr>
+        <td>Vessel keep watch on : @Html.DisplayFor(model => model.d_detail_communication_freqency)</td>
+    </tr>
+    <tr><td><br /></td></tr>
+    <tr>
+        <td>Details of Owner : </td>
+    </tr>
+    <tr>
+       <td>1) Name : @Html.ViewBag.ownerName</td>
+    </tr>
+    <tr>
+       <td>2) Address : @Html.ViewBag.ownerAddress</td>
+    </tr>
+    <tr>
+       <td>3) Telephone : @Html.ViewBag.ownerTele</td>
     </tr>
     <tr><td><br /></td></tr>
 </table>
 
 <table>
-    <tr>
-        <td><h5>It has been reported fishing vessel "@Html.DisplayFor(model => model.vessel.vessel_name)" has faced a distress.</h5></td>
-    </tr>
-    <tr>
-        <td><h5>Type of distress : @Html.DisplayFor(model => model.distress.distress_name)</h5></td>
-    </tr>
     <tr><td><br /></td></tr>
 </table>
 
-<h3>Details of F/V "@Html.DisplayFor(model => model.vessel.vessel_name)"</h3>
-
-<table border="1">
+<table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.vessel.vessel_no)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.owner.owner_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.owner.owner_address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.owner.owner_tele)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.owner.owner_nic)
-        </th>
-        <th>
-            @Html.DisplayName("Application Type")
-        </th>
-        <th></th>
+        <td>@Html.DisplayName("Radio Officer")</td><td><span style="margin:100px"></span></td><td>@Html.DisplayName("Duty Officer")</td>
     </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.vessel.registration.registration_code)
-                @Html.DisplayFor(modelItem => item.vessel.vessel_no)
-                @Html.DisplayFor(modelItem => item.vessel.district.district_code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.owner.owner_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.owner.owner_address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.owner.owner_tele)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.owner.owner_nic)
-            </td>
-            <td>
-                @Html.DisplayName("Application")
-            </td>
-        </tr>
-    }
+    <tr>
+        <td>@Html.ViewBag.radioOfficer (Senior Radio Officer)</td><td><span style="margin:100px"></span></td><td>@Html.ViewBag.dutyOfficer (Radio Officer)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayName("For Director")</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayName("Fisheries and Aquatic Recources")</td>
+    </tr>
+    <tr><td><br /></td></tr>
+</table>

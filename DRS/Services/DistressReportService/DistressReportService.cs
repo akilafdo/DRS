@@ -172,6 +172,25 @@ namespace DRS.Services.DistressReportService
             return vesselOwner; 
         }
 
+        //get owner data to Fax Message
+        public owner getOwnerForFaxDB(int distressReportId)
+        {
+            d_detail d_detail = null;
+            vessel_owner_ref vessel_owner_ref = null;
+            owner owner = null;
+            try
+            {
+                d_detail = db.d_detail.Where(d => d.d_detail_id == distressReportId).FirstOrDefault();
+                vessel_owner_ref = db.vessel_owner_ref.Where(vor => vor.vessel_id == d_detail.vessel_id).FirstOrDefault();
+                owner = db.owners.Where(o => o.owner_id == vessel_owner_ref.owner_id && o.owner_status == 1).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return owner;
+        }
+
         //set*Distress
         public SelectList getDistressSelectListDB()
         {

@@ -372,7 +372,6 @@ C:\Users\Malindu Dilshan\Documents\Visual Studio 2015\Projects\DRS\DRS\bin\Micro
 C:\Users\Malindu Dilshan\Documents\Visual Studio 2015\Projects\DRS\DRS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Malindu Dilshan\Documents\Visual Studio 2015\Projects\DRS\DRS\obj\Debug\DRS.dll
 C:\Users\Malindu Dilshan\Documents\Visual Studio 2015\Projects\DRS\DRS\obj\Debug\DRS.pdb
-C:\Users\Malindu Dilshan\Documents\DRS befor VS update\DRS_Currupt\DRS\obj\Debug\DRS.csprojResolveAssemblyReference.cache
 C:\Users\Malindu Dilshan\Documents\DRS befor VS update\DRS_Currupt\DRS\obj\Debug\DRS.dll
 C:\Users\Malindu Dilshan\Documents\DRS befor VS update\DRS_Currupt\DRS\obj\Debug\DRS.pdb
 C:\Users\Malindu Dilshan\Documents\DRS befor VS update\DRS_Currupt\DRS\bin\roslyn\csc.exe
@@ -459,3 +458,4 @@ C:\Users\Malindu Dilshan\Documents\DRS befor VS update\DRS_Currupt\DRS\bin\Micro
 C:\Users\Malindu Dilshan\Documents\DRS befor VS update\DRS_Currupt\DRS\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Malindu Dilshan\Documents\DRS befor VS update\DRS_Currupt\DRS\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Malindu Dilshan\Documents\DRS befor VS update\DRS_Currupt\DRS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Malindu Dilshan\Documents\DRS befor VS update\DRS_Currupt\DRS\obj\Debug\DRS.csprojResolveAssemblyReference.cache

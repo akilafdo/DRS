@@ -316,6 +316,7 @@
     <Content Include="App_Browsers\qt.browser" />
     <None Include="Properties\PublishProfiles\DRSProject.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="IMG_0927.JPG" />
     <Content Include="Rotativa\libeay32.dll" />
     <Content Include="Rotativa\libgcc_s_dw2-1.dll" />
     <Content Include="Rotativa\mingwm10.dll" />
